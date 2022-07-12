@@ -1,13 +1,9 @@
 // Here we create the Header Component that will receive props and we know we want to have a users
 //     first and last name
-import React from 'react';
+import React, {useState} from 'react';
     
 const Profile = (props) => {
-    // We can assume props looks like an object literal with 2 keys and values because of what was passed in
-    // {
-    //    "firstName":"Bill",
-    //    "lastName":"Justice"
-    // }
+    const [ birthday, setBirthday ] = useState(props.currentAge);
     return (
         <div>
             <h1>
@@ -18,7 +14,9 @@ const Profile = (props) => {
             </p>    
             <p>
                 Hair Color: {props.hairColor}
-            </p>    
+            </p>
+            <p>Birthday: { birthday }</p>
+            <button onClick={ (event) => setBirthday(birthday + 1)}>Happy Birthday {props.firstName} {props.lastName}</button>
         </div>
     );
 }
